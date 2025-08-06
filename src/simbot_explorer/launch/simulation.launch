@@ -1,0 +1,8 @@
+<!-- ~/ros_sim_ws/src/simbot_explorer/launch/simulation.launch -->
+<launch>
+    <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world" />
+
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch">
+        
+    </include>
+</launch>

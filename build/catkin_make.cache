@@ -1,0 +1,2 @@
+simbot_explorer
+-DCATKIN_DEVEL_PREFIX=/home/aakarsh/ros_sim_ws/devel -DCMAKE_INSTALL_PREFIX=/home/aakarsh/ros_sim_ws/install -G Unix Makefiles

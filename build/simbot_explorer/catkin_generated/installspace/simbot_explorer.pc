@@ -1,0 +1,8 @@
+prefix=/home/aakarsh/ros_sim_ws/install
+
+Name: simbot_explorer
+Description: Description of simbot_explorer
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
