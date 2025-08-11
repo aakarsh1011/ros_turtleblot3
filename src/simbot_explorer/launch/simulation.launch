@@ -1,8 +1,18 @@
-<!-- ~/ros_sim_ws/src/simbot_explorer/launch/simulation.launch -->
 <launch>
-    <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world" />
+  <arg name="world_file" default="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/>
 
-    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch">
-        
-    </include>
+  <!-- Start the simulation -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch" />
+
+  <!-- Static transform from base_footprint to base_scan -->
+  <group ns="tf">
+    <node pkg="tf" type="static_transform_publisher" name="base_scan_tf" 
+          args="0 0 0 0 0 0 base_footprint base_scan 10" 
+          launch-prefix="bash -c 'sleep 5; $0 $@'" />
+  </group>
+
+  <!-- Add robot_state_publisher to publish link transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro'" />
+  </node>
 </launch>
